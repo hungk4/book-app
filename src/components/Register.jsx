@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 
 import { useForm } from "react-hook-form";
@@ -14,12 +14,15 @@ const Register = () => {
     formState: { errors },
   } = useForm();
 
+  const navigate = useNavigate();
   // register a user
   const onSubmit = async (data) => {
     // console.log(data);
     try {
       await registerUSer(data.email, data.password);
       alert("User registered successfully");
+      console.log("go here");
+      navigate("/");
     } catch (error) {
       console.log(error);
       setMessage("Please provide a valid email and password");
@@ -30,7 +33,7 @@ const Register = () => {
       await signInWithGoogle();
       alert("Login succesfully with Google!");
       navigate("/");
-    } catch {
+    } catch (error) {
       alert("Google sign in failed!");
       console.log(error);
     }
