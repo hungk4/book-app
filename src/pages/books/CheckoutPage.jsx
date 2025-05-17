@@ -38,7 +38,6 @@ const CheckoutPage = () => {
       productIds: cartItems.map((item) => item?._id),
       totalPrice: totalPrice,
     };
-    console.log(">>> order in checkout page ", newOrder);
     try {
       await createOrder(newOrder).unwrap();
       Swal.fire({
