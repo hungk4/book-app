@@ -7,6 +7,7 @@ const OrderPage = () => {
 
 
     const { data: orders = [], isLoading, isError } = useGetOrderByEmailQuery(currentUser.email);
+    console.log(">>> orders: ", orders);
     if (isLoading) return <div>Loading...</div>
     if (isError) return <div>Error geting orders data</div>
     return (

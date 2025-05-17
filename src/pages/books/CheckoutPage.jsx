@@ -35,10 +35,10 @@ const CheckoutPage = () => {
         zipCode: data.zipcode,
       },
       phone: data.phone,
-      productId: cartItems.map((item) => item?._id),
+      productIds: cartItems.map((item) => item?._id),
       totalPrice: totalPrice,
     };
-    console.log(newOrder);
+    console.log(">>> order in checkout page ", newOrder);
     try {
       await createOrder(newOrder).unwrap();
       Swal.fire({
